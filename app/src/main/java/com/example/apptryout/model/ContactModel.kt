@@ -1,8 +1,11 @@
 package com.example.apptryout.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
-data class ContactModel(
+@Parcelize
+data class ContactModel (
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")
@@ -14,7 +17,11 @@ data class ContactModel(
     @SerializedName("company")
     var company: String,
     @SerializedName("email")
-    var email: String,
+    var email : String,
     @SerializedName("userId")
     val userId: Int,
-)
+    @SerializedName("image")
+    var image: String?,
+    @SerializedName("imageName")
+    var imageName: String?,
+): Parcelable

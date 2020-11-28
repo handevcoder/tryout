@@ -9,6 +9,7 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface UserService {
+
     @POST("api/v1/signin")
     fun userLogin(
         @Body
@@ -20,4 +21,5 @@ interface UserService {
         @Body
         registration: BodyRegistration
     ): Call<ResponseModel<String>>
+
 }

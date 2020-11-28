@@ -1,37 +1,34 @@
 package com.example.apptryout
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import com.example.apptryout.model.ContactModel
-import com.example.apptryout.model.LoginBody
-import com.example.apptryout.repository.ContactRemoteRepository
-import com.example.apptryout.repository.UserRemoteRepository
-import com.example.apptryout.service.ContactService
-import com.example.apptryout.service.UserService
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
+import androidx.navigation.findNavController
+import com.example.apptryout.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), LoginContract.View {
-    private val service: UserService by lazy { Api.userService }
-    private val contactService: ContactService by lazy { Api.contactService }
-    private val repositoryUser: UserRemoteRepository by lazy { UserRemoteRepository(service) }
-    private val repositoryContact: ContactRemoteRepository by lazy { ContactRemoteRepository(contactService) }
-    private val presenter: LoginPresenter by lazy { LoginPresenter(this, repositoryUser, repositoryContact) }
 
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var navigationController: NavController
+    lateinit var binding: ActivityMainBinding
+
+    private val prefs: UserSession by lazy {
+        UserSession(App.instance)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        navigationController =  this.findNavController(R.id.navHostFragment)
 
-        presenter.userLogin(LoginBody("l200140004@gmail.com", "l200140004"))
-        presenter.getAllContact()
+        if (prefs.loggedIn){
+            navigationController.navigate(R.id.homeFragment)
+        }else{
+            navigationController.navigate(R.id.loginFragment)
+        }
+
     }
 
-    override fun onSuccessLogin(token: String) {
-        Toast.makeText(this, "Check $token", Toast.LENGTH_LONG).show()
-    }
 
-    override fun onSuccessGetContact(list: List<ContactModel>) {
-        println("Test out $list")
-    }
 }

@@ -35,6 +35,7 @@ object Api {
             .build()
     }
 
-    val userService: UserService by lazy { retrofit.create(UserService::class.java) }
-    val contactService: ContactService by lazy { retrofit.create(ContactService::class.java) }
+    val userService:  UserService by lazy { retrofit.create(UserService::class.java) }
+    val contactService:  ContactService by lazy { retrofit.create(ContactService::class.java) }
+
 }
