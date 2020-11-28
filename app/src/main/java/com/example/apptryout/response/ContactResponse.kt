@@ -1,4 +1,4 @@
 package com.example.apptryout.response
 
-class GetContactResponse {
+class ContactResponse {
 }

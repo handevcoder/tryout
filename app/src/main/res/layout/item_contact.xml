@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="8dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="6dp"
+    android:backgroundTint="@color/cardview_light_background">
+
+
+        <TextView
+            android:id="@+id/tvContact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/app_name"
+            android:lines="2"
+            android:padding="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+</androidx.cardview.widget.CardView>
